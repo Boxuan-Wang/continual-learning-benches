@@ -125,7 +125,7 @@ def main() -> None:
     args = parse_args()
 
     try:
-        from transformers import AutoModelForCausalLM, AutoTokenizer
+        from modelscope import AutoModelForCausalLM, AutoTokenizer
     except ImportError as exc:
         raise ImportError(
             "This entrypoint requires transformers. Install with `pip install transformers`."

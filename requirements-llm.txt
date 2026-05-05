@@ -1,0 +1,13 @@
+# Core runtime
+torch>=2.1
+tqdm>=4.66
+modelscope==1.29.2
+
+# HuggingFace model/tokenizer stack
+transformers>=4.40
+accelerate>=0.28
+safetensors>=0.4
+sentencepiece>=0.1.99
+
+# LoRA / PEFT integration (used when --use-lora)
+peft>=0.10
