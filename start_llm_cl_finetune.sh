@@ -2,21 +2,18 @@
 set -euo pipefail
 
 # Usage:
-#   ./start_llm_cl_finetune.sh <data_root> <output_dir> [extra run_llama_ewc.py args...]
+#   1) Set DATA_ROOT / OUTPUT_DIR below, then run:
+#      ./start_llm_cl_finetune.sh [extra run_llama_ewc.py args...]
+#   2) Optional one-off override via env vars:
+#      DATA_ROOT=/path/to/data OUTPUT_DIR=/path/to/out ./start_llm_cl_finetune.sh [extra args...]
 #
 # Examples:
-#   ./start_llm_cl_finetune.sh ./my_data ./outputs/exp1
-#   USE_LORA=0 TRAINABLE_PARAM_PATTERNS="lm_head" ./start_llm_cl_finetune.sh ./my_data ./outputs/no_lora
-#   MODEL_NAME="meta-llama/Llama-3.1-8B-Instruct" ./start_llm_cl_finetune.sh ./my_data ./outputs/inst --epochs-per-context 2
+#   ./start_llm_cl_finetune.sh
+#   USE_LORA=0 TRAINABLE_PARAM_PATTERNS="lm_head" ./start_llm_cl_finetune.sh
+#   MODEL_NAME="meta-llama/Llama-3.1-8B-Instruct" ./start_llm_cl_finetune.sh --epochs-per-context 2
 
-if [[ $# -lt 2 ]]; then
-  echo "Usage: $0 <data_root> <output_dir> [extra args...]"
-  exit 1
-fi
-
-DATA_ROOT="$1"
-OUTPUT_DIR="$2"
-shift 2
+DATA_ROOT="${DATA_ROOT:-/home/admin/workspace/aop_lab/collabmask/data/cl_preprocessed_4}"
+OUTPUT_DIR="${OUTPUT_DIR:-/home/admin/workspace/aop_lab/collabmask/results/llama_8b/ewc}"
 
 if [[ ! -d "$DATA_ROOT" ]]; then
   echo "Error: data_root does not exist: $DATA_ROOT"
