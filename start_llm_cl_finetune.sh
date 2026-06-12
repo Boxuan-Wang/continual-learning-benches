@@ -13,7 +13,7 @@ set -euo pipefail
 #   MODEL_NAME="meta-llama/Llama-3.1-8B-Instruct" ./start_llm_cl_finetune.sh --epochs-per-context 2
 
 DATA_ROOT="${DATA_ROOT:-/home/admin/workspace/aop_lab/collabmask/data/cl_preprocessed_4}"
-OUTPUT_DIR="${OUTPUT_DIR:-/home/admin/workspace/aop_lab/collabmask/results/llama_8b/ewc}"
+OUTPUT_DIR="${OUTPUT_DIR:-/home/admin/workspace/aop_lab/collabmask/results/mistral_7b/ewc}"
 
 if [[ ! -d "$DATA_ROOT" ]]; then
   echo "Error: data_root does not exist: $DATA_ROOT"
@@ -27,7 +27,7 @@ fi
 
 # ---------- Defaults (override with env vars) ----------
 PYTHON_BIN="${PYTHON_BIN:-python}"
-MODEL_NAME="${MODEL_NAME:-meta-llama/Llama-3.1-8B}"
+MODEL_NAME="${MODEL_NAME:-AI-ModelScope/Mistral-7B-v0.1}"
 
 USE_LORA="${USE_LORA:-1}"   # 1=true, 0=false
 LORA_R="${LORA_R:-16}"

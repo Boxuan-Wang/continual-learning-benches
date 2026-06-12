@@ -142,7 +142,7 @@ class JsonlQADatasetAdapter(ContextDatasetAdapter):
         context_dirs = sorted(root.glob("task_*"), key=self._task_index)
         for context_dir in context_dirs:
             context_id = self._task_index(context_dir)
-            train_jsonl = context_dir / "train_mix" / "data.jsonl"
+            train_jsonl = context_dir / "train_mixed" / "data.jsonl"
             val_jsonl = context_dir / "val" / "data.jsonl"
             if not train_jsonl.exists() or not val_jsonl.exists():
                 raise FileNotFoundError(
